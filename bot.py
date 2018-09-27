@@ -77,9 +77,11 @@ def main(argv):
 				developingCandlestick.tick(chart.getCurrentPrice())
 
 			if (developingCandlestick.isClosed()):
+				print("CLOSE -----")
 				candlesticks.append(developingCandlestick)
 				strategy.tick(developingCandlestick)
-				developingCandlestick = BotCandlestick(period=period)
+				developingCandlestick = BotCandlestick(period=period,startTime=time.time())
+				print(developingCandlestick.startTime,time.time())
 
 			time.sleep(int(30))
 
